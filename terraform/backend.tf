@@ -9,7 +9,7 @@ terraform {
   backend "azurerm" {
     # using SP method to create the state of the backend
     resource_group_name  = "rg-terraform-state"
-    storage_account_name = "saterraformstate"
+    storage_account_name = "santerraform"
     container_name       = "terraform-state"
     # state name that will be created
     key                  = "terraform-test"
