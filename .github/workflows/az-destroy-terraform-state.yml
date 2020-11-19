@@ -21,6 +21,4 @@ jobs:
       with:
         azcliversion: 2.0.72
         inlineScript: |
-          az storage container delete --account-name ${{secrets.STORAGE_ACCOUNT_NAME}} --name ${{secrets.STORAGE_CONTAINER_NAME}}
-          az storage account delete -n ${{secrets.STORAGE_ACCOUNT_NAME}} -g ${{secrets.RESOURCE_GROUP_NAME}}
-          az group delete -g ${{secrets.RESOURCE_GROUP_NAME}}
+          az group delete -g ${{secrets.RESOURCE_GROUP_NAME}} --yes
