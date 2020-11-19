@@ -1,10 +1,6 @@
 name: Azure Terraform Destroy State
 
 on: workflow_dispatch
-#  push:
-#    branches:
-#    - master
-#    - 'feature/**'
 
 jobs:
   destroy:

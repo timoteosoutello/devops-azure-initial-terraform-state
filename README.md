@@ -2,27 +2,22 @@
 
 ## Creating RBAC
 
-az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/{{SUBSCRIPTION_ID}}" --name="Azure-DevOps-GithubActions" --sdk-auth
+Example command: az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/{{SUBSCRIPTION_ID}}" --name="Azure-DevOps-GithubActions" --sdk-auth
 
-*As side note, the "-**-sdk-auth**" is required.*
-
-## Set Subscription
-az account set --subscription {{SUBSCRIPTION_ID}}
-
-## Create Resource Group
+## Creating Resource Group
 az group create -g {{RESOURCE_GROUP_NAME}} -l {{STORAGE_REGION_NAME}
 
-## Create Storage Account 
+## Creating Storage Account 
 az storage account create -n {{STORAGE_ACCOUNT_NAME}} -g {{RESOURCE_GROUP_NAME}} -l {{STORAGE_REGION_NAME}} --sku {{STORAGE_SKU_NAME}
 
-## Create Storage Container
+## Creating Storage Container
 az storage container create -n {{STORAGE_CONTAINER_NAME}} --account-name {{STORAGE_ACCOUNT_NAME}}
 
-## Azure x Terraform parameters
+## Azure x Terraform Parameters
 
-- appId (Azure) → client_id (Terraform).
-- password (Azure) → client_secret (Terraform).
-- tenant (Azure) → tenant_id (Terraform).
+- appId → client_id 
+- password → client_secret
+- tenant → tenant_id
 
 # References
 
@@ -33,8 +28,13 @@ az storage container create -n {{STORAGE_CONTAINER_NAME}} --account-name {{STORA
   - https://github.com/Azure/login
   - https://github.com/Azure/CLI
   - https://github.com/marketplace/actions/azure-cli-action
-- Storage
-  - https://docs.microsoft.com/en-us/cli/azure/storage?view=azure-cli-latest
+- CLI
+  - Storage
+    - https://docs.microsoft.com/en-us/cli/azure/storage?view=azure-cli-latest
+  - Resource Group
+    - https://docs.microsoft.com/en-us/cli/azure/group?view=azure-cli-latest
+  - AD Service Principal
+    - https://docs.microsoft.com/en-us/cli/azure/ad/sp?view=azure-cli-latest
 
 **Externals**
 

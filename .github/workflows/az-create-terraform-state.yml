@@ -1,10 +1,6 @@
 name: Azure Terraform Init State
 
 on: workflow_dispatch
-#  push:
-#    branches:
-#    - master
-#    - 'feature/**'
 
 jobs:
   create:
@@ -21,6 +17,6 @@ jobs:
       with:
         azcliversion: 2.0.72
         inlineScript: |
-          az group create -g {{secrets.RESOURCE_GROUP_NAME}} -l {{secrets.STORAGE_REGION_NAME}} 
-          az storage account create -n {{secrets.STORAGE_ACCOUNT_NAME }} -g {{secrets.RESOURCE_GROUP_NAME}} -l {{secrets.STORAGE_REGION_NAME}} 
+          az group create -g ${{secrets.RESOURCE_GROUP_NAME}} -l ${{secrets.STORAGE_REGION_NAME}} 
+          az storage account create -n ${{secrets.STORAGE_ACCOUNT_NAME}} -g ${{secrets.RESOURCE_GROUP_NAME}} -l ${{secrets.STORAGE_REGION_NAME}} 
           az storage container create --account-name ${{secrets.STORAGE_ACCOUNT_NAME}} --name ${{secrets.STORAGE_CONTAINER_NAME}}
