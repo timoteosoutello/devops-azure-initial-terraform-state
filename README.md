@@ -5,13 +5,19 @@ Requirements:
 - The azure account created
 - The Service Principal set up
 - Set the variables (used security variables to make the repo be cleaner) to be used across the commands (used in the github actions)
-  - AZURE_CREDENTIALS
-  - SUBSCRIPTION_ID
-  - RESOURCE_GROUP_NAME
-  - STORAGE_ACCOUNT_NAME
-  - STORAGE_CONTAINER_NAME
-  - STORAGE_REGION_NAME (In my test, is *brazilsouth*)
-  - STORAGE_SKU_NAME
+  - For Azure CLI
+    - AZURE_CREDENTIALS
+    - SUBSCRIPTION_ID
+    - RESOURCE_GROUP_NAME
+    - STORAGE_ACCOUNT_NAME
+    - STORAGE_CONTAINER_NAME
+    - STORAGE_REGION_NAME (In my test, is *brazilsouth*)
+    - STORAGE_SKU_NAME
+  - For Terraform CLI
+    - AZURE_CLIENT_ID
+    - AZURE_CLIENT_SECRET
+    - AZURE_SUBSCRIPTION_ID
+    - AZURE_TENANT_ID
 
 ## Azure CLI
 
@@ -96,3 +102,4 @@ What is not covered:
 
 - https://gmusumeci.medium.com/how-to-create-an-azure-remote-backend-for-terraform-67cce5da1520
 - https://www.blendmastersoftware.com/blog/deploying-to-azure-using-terraform-and-github-actions
+- https://dev.to/shofol/run-your-github-actions-jobs-from-a-specific-directory-1i9e

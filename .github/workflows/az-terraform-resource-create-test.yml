@@ -5,6 +5,9 @@ on: workflow_dispatch
 jobs:
   terraform-apply:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./terraform
     env:
       ARM_CLIENT_ID: ${{secrets.AZURE_CLIENT_ID}}
       ARM_CLIENT_SECRET: ${{secrets.AZURE_CLIENT_SECRET}}
@@ -27,15 +30,13 @@ jobs:
 
     - name: Terraform Validate
       id: validate
-      run: terraform validate -no-color
+      run: terraform validate
 
     - name: Terraform Plan
       id: plan
-      run: terraform plan -no-color
+      run: terraform plan
       continue-on-error: true
 
     - name: Terraform Apply
       id: apply
-      script: |
-        cd terraform
-        terraform apply
+      run: terraform apply
