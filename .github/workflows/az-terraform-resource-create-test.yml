@@ -3,14 +3,39 @@ name: Azure Terraform Create Resource
 on: workflow_dispatch
 
 jobs:
-  destroy:
+  terraform-apply:
     runs-on: ubuntu-latest
-    steps:
+    env:
+      ARM_CLIENT_ID: ${{secrets.AZURE_CLIENT_ID}}
+      ARM_CLIENT_SECRET: ${{secrets.AZURE_CLIENT_SECRET}}
+      ARM_SUBSCRIPTION_ID: ${{secrets.AZURE_SUBSCRIPTION_ID}}
+      ARM_TENANT_ID: ${{secrets.AZURE_TENANT_ID}}
 
-    - name: Login, Plan and Apply
-      uses: azure/login@v1
+    steps:
+    - uses: hashicorp/setup-terraform@v1
       with:
-        creds: ${{secrets.AZURE_CREDENTIALS}}
-        inlineScript: |
-          cd terraform
-          terraform apply
+        terraform_version: 0.13.5
+
+    - name: Terraform fmt
+      id: fmt
+      run: terraform fmt -check
+      continue-on-error: true
+
+    - name: Terraform Init
+      id: init
+      run: terraform init
+
+    - name: Terraform Validate
+      id: validate
+      run: terraform validate -no-color
+
+    - name: Terraform Plan
+      id: plan
+      run: terraform plan -no-color
+      continue-on-error: true
+
+    - name: Terraform Apply
+      id: apply
+      script: |
+        cd terraform
+        terraform apply

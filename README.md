@@ -72,6 +72,8 @@ What is not covered:
     - https://docs.microsoft.com/en-us/cli/azure/group?view=azure-cli-latest
   - AD Service Principal
     - https://docs.microsoft.com/en-us/cli/azure/ad/sp?view=azure-cli-latest
+- Generic
+  - Services available per region -> https://azure.microsoft.com/en-us/global-infrastructure/services/?regions=brazil-south,brazil-southeast&products=all
 
 **Github**
 
@@ -84,6 +86,11 @@ What is not covered:
   - https://github.com/terraform-providers/terraform-provider-azurerm
   - Checking releases -> https://github.com/terraform-providers/terraform-provider-azurerm/releases
 - Backend -> https://www.terraform.io/docs/backends/types/azurerm.html
+- With Github Actions
+  - https://github.com/hashicorp/setup-terraform
+  - https://github.com/marketplace/actions/hashicorp-setup-terraform
+  - https://learn.hashicorp.com/tutorials/terraform/github-actions
+  - https://nathan.kewley.me/2020-06-17-deploy-to-azure-using-terraform-and-github-actions/
 
 **Externals**
 
