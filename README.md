@@ -36,12 +36,6 @@ Requirements:
 ### Creating Storage Container
 `az storage container create -n {{STORAGE_CONTAINER_NAME}} --account-name {{STORAGE_ACCOUNT_NAME}}`
 
-## Azure x Terraform Parameters
-
-- appId → client_id 
-- password → client_secret
-- tenant → tenant_id
-
 ## CI/CD
 
 Using Github actions, it was created the following YML files:

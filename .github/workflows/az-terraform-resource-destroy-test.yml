@@ -23,7 +23,7 @@ jobs:
         terraform_version: 0.13.5
     - name: Terraform Init
       id: init
-      run: terraform init -lock=false
+      run: terraform init
     - name: Terraform Destroy
       id: destroy
       run: terraform destroy -auto-approve
