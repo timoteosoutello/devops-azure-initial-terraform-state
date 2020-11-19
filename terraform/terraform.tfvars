@@ -1,2 +1,2 @@
-region=brazilsouth
-resource_group_name=rg-azure-test
+region="brazilsouth"
+resource_group_name="rg-azure-test"
