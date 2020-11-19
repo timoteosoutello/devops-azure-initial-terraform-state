@@ -7,7 +7,7 @@ on: workflow_dispatch
 #    - 'feature/**'
 
 jobs:
-  build:
+  destroy:
     runs-on: ubuntu-latest
     steps:
 
@@ -16,4 +16,7 @@ jobs:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
     - run: |
-        ls
+        az account set --subscription ${{ secrets.SUBSCRIPTION_ID }}
+        az storage container delete --account-name ${{ secrets.STORAGE_ACCOUNT_NAME }} --name ${{ secrets.STORAGE_CONTAINER_NAME }}
+        az storage account delete -n {{ secrets.STORAGE_ACCOUNT_NAME }} -g {{ secrets.RESOURCE_GROUP_NAME }}
+        az group delete -g {{ secrets.RESOURCE_GROUP_NAME }}
