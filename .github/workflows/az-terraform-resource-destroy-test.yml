@@ -1,0 +1,23 @@
+name: Azure Terraform Destroy Resources
+
+on: workflow_dispatch
+
+defaults:
+  run:
+    working-directory: ./terraform
+    
+jobs:
+  terraform-apply:
+    runs-on: ubuntu-latest
+    env:
+      ARM_CLIENT_ID: ${{secrets.AZURE_CLIENT_ID}}
+      ARM_CLIENT_SECRET: ${{secrets.AZURE_CLIENT_SECRET}}
+      ARM_SUBSCRIPTION_ID: ${{secrets.AZURE_SUBSCRIPTION_ID}}
+      ARM_TENANT_ID: ${{secrets.AZURE_TENANT_ID}}
+    steps:
+    - uses: hashicorp/setup-terraform@v1
+      with:
+        terraform_version: 0.13.5
+    - name: Terraform Destroy
+      id: destroy
+      run: terraform destroy
