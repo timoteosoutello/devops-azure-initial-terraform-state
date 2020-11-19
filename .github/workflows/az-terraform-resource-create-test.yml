@@ -1,0 +1,16 @@
+name: Azure Terraform Create Resource
+
+on: workflow_dispatch
+
+jobs:
+  destroy:
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Login, Plan and Apply
+      uses: azure/login@v1
+      with:
+        creds: ${{secrets.AZURE_CREDENTIALS}}
+        inlineScript: |
+          cd terraform
+          terraform apply
