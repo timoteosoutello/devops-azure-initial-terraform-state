@@ -7,9 +7,11 @@ provider "azurerm" {
 terraform {
   required_version = ">= 0.13"
   backend "azurerm" {
+    # using SP method to create the state of the backend
     resource_group_name  = "rg-terraform-state"
-    storage_account_name = "satsoutello"
+    storage_account_name = "saterraformstate"
     container_name       = "terraform-state"
+    # state name that will be created
     key                  = "terraform-test"
   }
 }
