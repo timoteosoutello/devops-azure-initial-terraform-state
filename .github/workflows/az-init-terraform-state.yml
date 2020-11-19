@@ -16,7 +16,6 @@ jobs:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
     - run: |
-        az account set --subscription ${{ secrets.SUBSCRIPTION_ID }}
         az group create -g {{ secrets.RESOURCE_GROUP_NAME }} -l {{ secrets.STORAGE_REGION_NAME }} 
         az storage account create -n {{ secrets.STORAGE_ACCOUNT_NAME }} -g {{ secrets.RESOURCE_GROUP_NAME }} -l {{ secrets.STORAGE_REGION_NAME }} 
         az storage container create --account-name ${{ secrets.STORAGE_ACCOUNT_NAME }} --name ${{ secrets.STORAGE_CONTAINER_NAME }}

@@ -16,7 +16,6 @@ jobs:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
     - run: |
-        az account set --subscription ${{ secrets.SUBSCRIPTION_ID }}
         az storage container delete --account-name ${{ secrets.STORAGE_ACCOUNT_NAME }} --name ${{ secrets.STORAGE_CONTAINER_NAME }}
-        az storage account delete -n {{ secrets.STORAGE_ACCOUNT_NAME }} -g {{ secrets.RESOURCE_GROUP_NAME }}
-        az group delete -g {{ secrets.RESOURCE_GROUP_NAME }}
+        az storage account delete -n ${{ secrets.STORAGE_ACCOUNT_NAME }} -g ${{ secrets.RESOURCE_GROUP_NAME }}
+        az group delete -g ${{ secrets.RESOURCE_GROUP_NAME }}
