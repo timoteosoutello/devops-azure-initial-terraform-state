@@ -40,7 +40,7 @@ Output will be similar to that:
   `"managementEndpointUrl": "https://management.core.windows.net/"`
 `}`
 
-**Important**: Now copy/paste the output into the AZURE_CREDENTIALS variable and also for the `clientId`, `clientSecret`, `subscriptionId`, `tenantId`. You will not be able to retrieve this again after creation. The possibility to see again is resetting it.
+**Important**: Now copy/paste the output into the AZURE_CREDENTIALS variable and also for the `clientId`, `clientSecret`, `subscriptionId`, `tenantId` into AZURE_* variables, as they are used for terraform scripts. You will not be able to retrieve this data again after creation. The possibility to check this output again is resetting it.
 
 You should be able to see the Service Principal User present in the AD, as showed below:
 
