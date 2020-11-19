@@ -1,0 +1,18 @@
+name: Azure Terraform Init State
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Azure CLI Action
+      uses: Azure/cli@v1.0.0
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: Test
+      run: ls
