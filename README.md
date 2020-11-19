@@ -25,7 +25,26 @@ Requirements:
 
 `az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/{{SUBSCRIPTION_ID}}" --name="Azure-DevOps-GithubActions" --sdk-auth`
 
-**Important**: Now copy/paste the output into the AZURE_CREDENTIALS variable
+Output will be similar to that:
+
+`{`
+  `"clientId": "<clientId>",`
+  `"clientSecret": "<clientSecret>",`
+  `"subscriptionId": "<subscriptionId>",`
+  `"tenantId": "<tenantId>",`
+  `"activeDirectoryEndpointUrl": "https://login.microsoftonline.com",`
+  `"resourceManagerEndpointUrl": "https://management.azure.com/",`
+  `"activeDirectoryGraphResourceId": "https://graph.windows.net/",`
+  `"sqlManagementEndpointUrl": "https://management.core.windows.net:8443/",`
+  `"galleryEndpointUrl": "https://gallery.azure.com/",`
+  `"managementEndpointUrl": "https://management.core.windows.net/"`
+`}`
+
+**Important**: Now copy/paste the output into the AZURE_CREDENTIALS variable and also for the `clientId`, `clientSecret`, `subscriptionId`, `tenantId`. You will not be able to retrieve this again after creation. The possibility to see again is resetting it.
+
+You should be able to see the Service Principal User present in the AD, as showed below:
+
+![](documentation/images/creating_the_rbac.png)
 
 ### Creating Resource Group
 `az group create -g {{RESOURCE_GROUP_NAME}} -l {{STORAGE_REGION_NAME}}`
@@ -36,22 +55,20 @@ Requirements:
 ### Creating Storage Container
 `az storage container create -n {{STORAGE_CONTAINER_NAME}} --account-name {{STORAGE_ACCOUNT_NAME}}`
 
-## Azure x Terraform Parameters
-
-- appId → client_id 
-- password → client_secret
-- tenant → tenant_id
-
 ## CI/CD
 
 Using Github actions, it was created the following YML files:
 
 - az-create-terraform-state.yml
   - To create the initial default terraform state
+    - Output in Azure will be like as below:
+      - ![](documentation/images/init_state_output_azure.png)
 - az-destroy-terraform-state.yml
   - It will destroy all the resources related to state, including the resource group
 - az-terraform-resource-create-test.yml
   - A test using the backend state file creating a resource
+    - Output in Azure will be like as below:
+      - ![](documentation/images/terraform_state_after_apply.png)
 - az-terraform-resource-destroy-test.yml
   - A test using the backend state file destroying a resource
 
