@@ -2,7 +2,9 @@ name: Azure Terraform Init State
 
 on:
   push:
-    branches: [ main ]
+    branches:    
+    - master
+    - 'feature/**'
 
 jobs:
   build:
