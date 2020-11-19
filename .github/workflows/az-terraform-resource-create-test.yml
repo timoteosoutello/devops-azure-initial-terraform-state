@@ -2,41 +2,36 @@ name: Azure Terraform Create Resource
 
 on: workflow_dispatch
 
+defaults:
+  run:
+    working-directory: ./terraform
+    
 jobs:
   terraform-apply:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./terraform
     env:
       ARM_CLIENT_ID: ${{secrets.AZURE_CLIENT_ID}}
       ARM_CLIENT_SECRET: ${{secrets.AZURE_CLIENT_SECRET}}
       ARM_SUBSCRIPTION_ID: ${{secrets.AZURE_SUBSCRIPTION_ID}}
       ARM_TENANT_ID: ${{secrets.AZURE_TENANT_ID}}
-
     steps:
     - uses: hashicorp/setup-terraform@v1
       with:
         terraform_version: 0.13.5
-
     - name: Terraform fmt
       id: fmt
       run: terraform fmt -check
       continue-on-error: true
-
     - name: Terraform Init
       id: init
       run: terraform init
-
     - name: Terraform Validate
       id: validate
       run: terraform validate
-
     - name: Terraform Plan
       id: plan
       run: terraform plan
       continue-on-error: true
-
     - name: Terraform Apply
       id: apply
       run: terraform apply
