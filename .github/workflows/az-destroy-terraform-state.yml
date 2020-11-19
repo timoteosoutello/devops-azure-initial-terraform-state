@@ -1,18 +1,19 @@
 name: Azure Terraform Destroy State
 
-on:
-  push:
-    branches: [ main ]
+on: [ workflow_dispatch ]
+#  push:
+#    branches:
+#    - master
+#    - 'feature/**'
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Azure CLI Action
-      uses: Azure/cli@v1.0.0
+
+    - uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-    - name: Test
-      run: ls
+    - run: |
+        ls
