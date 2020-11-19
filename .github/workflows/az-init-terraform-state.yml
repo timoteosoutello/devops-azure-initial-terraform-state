@@ -11,11 +11,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-    - uses: azure/login@v1
+    - name: Azure Login
+      uses: azure/login@v1
       with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
+        creds: ${{secrets.AZURE_CREDENTIALS}}
 
-    - run: |
-        az group create -g {{ secrets.RESOURCE_GROUP_NAME }} -l {{ secrets.STORAGE_REGION_NAME }} 
-        az storage account create -n {{ secrets.STORAGE_ACCOUNT_NAME }} -g {{ secrets.RESOURCE_GROUP_NAME }} -l {{ secrets.STORAGE_REGION_NAME }} 
-        az storage container create --account-name ${{ secrets.STORAGE_ACCOUNT_NAME }} --name ${{ secrets.STORAGE_CONTAINER_NAME }}
+    - name: Azure CLI script
+      uses: azure/CLI@v1
+      with:
+        azcliversion: 2.0.72
+        inlineScript: |
+          az group create -g {{secrets.RESOURCE_GROUP_NAME}} -l {{secrets.STORAGE_REGION_NAME}} 
+          az storage account create -n {{secrets.STORAGE_ACCOUNT_NAME }} -g {{secrets.RESOURCE_GROUP_NAME}} -l {{secrets.STORAGE_REGION_NAME}} 
+          az storage container create --account-name ${{secrets.STORAGE_ACCOUNT_NAME}} --name ${{secrets.STORAGE_CONTAINER_NAME}}

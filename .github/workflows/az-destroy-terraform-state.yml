@@ -14,13 +14,13 @@ jobs:
     - name: Azure Login
       uses: azure/login@v1
       with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
+        creds: ${{secrets.AZURE_CREDENTIALS}}
 
     - name: Azure CLI script
       uses: azure/CLI@v1
       with:
         azcliversion: 2.0.72
         inlineScript: |
-        az storage container delete --account-name ${{secrets.STORAGE_ACCOUNT_NAME}} --name ${{secrets.STORAGE_CONTAINER_NAME}}
-        az storage account delete -n ${{secrets.STORAGE_ACCOUNT_NAME}} -g ${{secrets.RESOURCE_GROUP_NAME}}
-        az group delete -g ${{secrets.RESOURCE_GROUP_NAME}}
+          az storage container delete --account-name ${{secrets.STORAGE_ACCOUNT_NAME}} --name ${{secrets.STORAGE_CONTAINER_NAME}}
+          az storage account delete -n ${{secrets.STORAGE_ACCOUNT_NAME}} -g ${{secrets.RESOURCE_GROUP_NAME}}
+          az group delete -g ${{secrets.RESOURCE_GROUP_NAME}}
