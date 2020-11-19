@@ -18,8 +18,25 @@ az storage account create -n {{STORAGE_ACCOUNT_NAME}} -g {{RESOURCE_GROUP_NAME}}
 ## Create Storage Container
 az storage container create -n {{STORAGE_CONTAINER_NAME}} --account-name {{STORAGE_ACCOUNT_NAME}}
 
-# Azure x Terraform parameters:
+## Azure x Terraform parameters
 
 - appId (Azure) → client_id (Terraform).
 - password (Azure) → client_secret (Terraform).
 - tenant (Azure) → tenant_id (Terraform).
+
+# References
+
+**Microsoft**
+
+- Github Actions
+  - https://github.com/Azure/actions
+  - https://github.com/Azure/login
+  - https://github.com/Azure/CLI
+  - https://github.com/marketplace/actions/azure-cli-action
+- Storage
+  - https://docs.microsoft.com/en-us/cli/azure/storage?view=azure-cli-latest
+
+**Externals**
+
+- https://gmusumeci.medium.com/how-to-create-an-azure-remote-backend-for-terraform-67cce5da1520
+- https://www.blendmastersoftware.com/blog/deploying-to-azure-using-terraform-and-github-actions
