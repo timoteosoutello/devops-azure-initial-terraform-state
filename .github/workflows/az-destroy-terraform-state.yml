@@ -1,19 +1,20 @@
 name: Azure Terraform Destroy State
 
 on: workflow_dispatch
-#  push:
-#    branches:
-#    - master
-#    - 'feature/**'
 
 jobs:
-  build:
+  destroy:
     runs-on: ubuntu-latest
     steps:
 
-    - uses: azure/login@v1
+    - name: Azure Login
+      uses: azure/login@v1
       with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
+        creds: ${{secrets.AZURE_CREDENTIALS}}
 
-    - run: |
-        ls
+    - name: Azure CLI script
+      uses: azure/CLI@v1
+      with:
+        azcliversion: 2.0.72
+        inlineScript: |
+          az group delete -g ${{secrets.RESOURCE_GROUP_NAME}} --yes
