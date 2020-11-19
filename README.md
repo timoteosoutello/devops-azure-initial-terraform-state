@@ -44,7 +44,7 @@ Output will be similar to that:
 
 You should be able to see the Service Principal User present in the AD, as showed below:
 
-![](.\documentation\images\creating_the_rbac.png)
+![default_directory](.\documentation\images\creating_the_rbac.png)
 
 ### Creating Resource Group
 `az group create -g {{RESOURCE_GROUP_NAME}} -l {{STORAGE_REGION_NAME}}`
@@ -62,11 +62,13 @@ Using Github actions, it was created the following YML files:
 - az-create-terraform-state.yml
   - To create the initial default terraform state
     - Output in Azure will be like as below:
+      - ![storage_default](.\documentation\images\init_state_output_azure.png)
 - az-destroy-terraform-state.yml
   - It will destroy all the resources related to state, including the resource group
 - az-terraform-resource-create-test.yml
   - A test using the backend state file creating a resource
     - Output in Azure will be like as below:
+      - ![after_apply](.\documentation\images\terraform_state_after_apply.png)
 - az-terraform-resource-destroy-test.yml
   - A test using the backend state file destroying a resource
 
