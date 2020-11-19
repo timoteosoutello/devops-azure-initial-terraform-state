@@ -1,11 +1,11 @@
-name: Azure Terraform Create Resource
+name: Azure Terraform Create Resources
 
 on: workflow_dispatch
 
 defaults:
   run:
     working-directory: ./terraform
-    
+
 jobs:
   terraform-apply:
     runs-on: ubuntu-latest
