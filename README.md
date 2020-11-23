@@ -25,7 +25,7 @@ Requirements:
 
 ### Creating RBAC
 
-`az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/{{SUBSCRIPTION_ID}}" --name="Azure-DevOps-GithubActions" --sdk-auth`
+`az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/{{AZURE_SUBSCRIPTION_ID}}" --name="Azure-DevOps-GithubActions" --sdk-auth`
 
 Output will be similar to that:
 
